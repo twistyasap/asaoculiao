@@ -35,7 +35,7 @@
     { text: "Cervezas (para los que no manejan)", qty: "2 cajas" },
     { text: "Platos, vasos y servilletas", qty: "1 pack" },
     { text: "Encendedor + diario", qty: "✔" },
-    { text: "Bloqueador (el lago quema)", qty: "1" }
+    { text: "Bloqueador (el sol del campo pega)", qty: "1" }
   ];
 
   const COSTS = [
@@ -44,21 +44,21 @@
     { key: "carbon", label: "⚫ Carbón", value: 12000 },
     { key: "bebida", label: "🍺 Bebestibles", value: 45000 },
     { key: "verdura", label: "🥗 Pebre + choclos", value: 10000 },
-    { key: "bencina", label: "⛽ Bencina (2 autos)", value: 60000 },
-    { key: "peaje", label: "🛣️ Peajes", value: 10000 },
+    { key: "bencina", label: "⛽ Bencina (2 autos)", value: 30000 },
+    { key: "peaje", label: "🛣️ Peajes (camino viejo)", value: 0 },
     { key: "hielo", label: "🧊 Hielo + varios", value: 8000 }
   ];
 
   const TIMELINE = [
     { time: "09:30", icon: "📍", title: "Juntada en Duoc UC Antonio Varas 666", desc: "El que llega tarde paga el hielo." },
-    { time: "10:00", icon: "🚗", title: "Salida por la Ruta 78", desc: "Por Autopista del Sol. La Nave de Gabo adelante, El Incógnito atrás (si aparece)." },
-    { time: "11:00", icon: "⛽", title: "Parada en el servi", desc: "Café, baño y compra de último minuto." },
-    { time: "12:00", icon: "🌊", title: "Llegada a Rapel", desc: "Instalarse, abrir la cooler, primer chapuzón." },
+    { time: "10:00", icon: "🚗", title: "Salida por el Camino Viejo a Melipilla", desc: "Sin autopista ni peaje. La Nave de Gabo adelante, El Incógnito atrás (si aparece)." },
+    { time: "10:45", icon: "🥖", title: "Parada en el camino", desc: "Pan amasado, empanadas de horno y hielo." },
+    { time: "11:30", icon: "🏡", title: "Llegada al Campito Querido", desc: "Instalarse, abrir la cooler, reconocer el terreno." },
     { time: "13:00", icon: "🔥", title: "Se prende el fuego", desc: "Franquito al mando. Nadie toca la parrilla." },
     { time: "14:00", icon: "🌭", title: "Choripanes de entrada", desc: "Con harto pebre del Loro." },
     { time: "15:30", icon: "🥩", title: "La carne", desc: "El momento sagrado. Silencio." },
-    { time: "17:00", icon: "🏐", title: "Pichanga / lago / siesta", desc: "Elige tu propia aventura." },
-    { time: "19:30", icon: "🌅", title: "Atardecer en el lago", desc: "Foto grupal obligatoria (Chico Deni)." },
+    { time: "17:00", icon: "🏐", title: "Pichanga / siesta bajo el parrón", desc: "Elige tu propia aventura." },
+    { time: "19:30", icon: "🌅", title: "Atardecer en el campito", desc: "Foto grupal obligatoria (Chico Deni)." },
     { time: "21:00", icon: "🏠", title: "Vuelta a Santiago", desc: "Choferes sobrios. Sin excepciones." }
   ];
 
@@ -185,7 +185,7 @@
         statBar.style.setProperty("--w", "100%");
         statCard.classList.add("ok");
         alertBox.classList.add("solved");
-        alertText.innerHTML = `<b>PROBLEMA RESUELTO:</b> ${name} presta el auto. Todos al lago. 🙌`;
+        alertText.innerHTML = `<b>PROBLEMA RESUELTO:</b> ${name} presta el auto. Todos al campito. 🙌`;
         btn.hidden = true; reset.hidden = false;
         if (celebrate) {
           const r = btn.getBoundingClientRect();

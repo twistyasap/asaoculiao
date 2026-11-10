@@ -99,7 +99,7 @@
     no.addEventListener("click", () => {
       if (dodges <= 6) return dodge();
       state.going = false;
-      $("#btn-wsp-no").href = wspLink(`😢 ${state.name} no puede ir al asado en Rapel. Guárdenme un chori igual.`);
+      $("#btn-wsp-no").href = wspLink(`😢 ${state.name} no puede ir al asado en el Campito Querido. Guárdenme un chori igual.`);
       goTo("sad");
     });
     $("#btn-regret").addEventListener("click", () => {
@@ -177,11 +177,12 @@
     }, 1550);
 
     const lines = [
-      `🔥 *ASADO RAPEL* 🔥`,
+      `🔥 *ASADO EN EL CAMPITO QUERIDO* 🔥 (ex Rapel)`,
       `✅ ${state.name} CONFIRMA ASISTENCIA (pase N° ${num})`,
       state.car === "si" ? "🚙 ¡Y PRESTA AUTO! Problema resuelto." : "🧍 Va de copiloto.",
       `🎒 Lleva: ${bring.length ? bring.join(", ") : "su presencia"}`,
-      `📍 Sáb 28/11 · 09:30 Duoc UC Antonio Varas 666`
+      `📍 Sáb 28/11 · 09:30 Duoc UC Antonio Varas 666`,
+      `🏡 Destino: Campito Querido, Camino Viejo a Melipilla`
     ];
     $("#btn-wsp").href = wspLink(lines.join("\n"));
 

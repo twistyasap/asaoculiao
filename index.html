@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asado Rapel 🔥</title>
-  <meta name="description" content="Dashboard oficial del asado en Rapel: autos, crew, parrilla, lucas y ruta desde Santiago.">
+  <title>Asado Campito Querido 🔥</title>
+  <meta name="description" content="Dashboard oficial del asado en el Campito Querido (Camino Viejo a Melipilla): autos, crew, parrilla, lucas y ruta.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&family=Permanent+Marker&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="#top" class="nav__logo">🔥 ASADO<span>RAPEL</span></a>
+    <a href="#top" class="nav__logo">🔥 ASADO <s>RAPEL</s><span>CAMPITO</span></a>
     <ul class="nav__links">
       <li><a href="#dash">Dashboard</a></li>
       <li><a href="#ruta">El pique</a></li>
@@ -35,16 +35,26 @@
 
   <!-- HERO -->
   <header class="hero" id="top">
-    <p class="hero__pre">Santiago ➜ Lago Rapel · edición 2026</p>
+    <p class="hero__pre">Santiago ➜ <s>Lago Rapel</s> Campito Querido · edición 2026</p>
     <h1 class="hero__title">
       <span class="fire-text" data-text="ASADO">ASADO</span>
-      <span class="hero__title-2"><span class="flag-text" data-text="RAPEL">RAPEL</span><i class="flag-star" aria-hidden="true">★</i></span>
+      <del class="hero__title-2 is-cancelled">
+        <span class="flag-text" data-text="RAPEL">RAPEL</span><i class="flag-star" aria-hidden="true">★</i>
+        <svg class="scribble" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 62 C 80 50, 180 44, 296 36" />
+          <path d="M10 30 C 90 70, 200 85, 290 72" />
+          <path d="M6 84 C 70 20, 150 95, 220 40 S 280 30, 294 22" />
+        </svg>
+      </del>
+      <ins class="hero__new" data-text="CAMPITO QUERIDO"><span class="hero__caret" aria-hidden="true">^</span>CAMPITO QUERIDO</ins>
     </h1>
     <svg class="hero__underline" viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true">
       <defs><linearGradient id="cl-grad" x1="0" x2="1"><stop offset="0" stop-color="#0039a6"/><stop offset=".33" stop-color="#0039a6"/><stop offset=".34" stop-color="#ffffff"/><stop offset=".66" stop-color="#ffffff"/><stop offset=".67" stop-color="#d52b1e"/><stop offset="1" stop-color="#d52b1e"/></linearGradient></defs>
       <path d="M5 20 Q 100 5 200 15 T 395 10" stroke="url(#cl-grad)" />
     </svg>
-    <p class="hero__sub">Carbón, choripán, pebre y lago. <b>Falta un auto no má.</b></p>
+    <p class="hero__place">📍 Camino Viejo a Melipilla</p>
+    <div class="hero__stamp" aria-hidden="true">CAMBIO DE<br>PLANES</div>
+    <p class="hero__sub">Carbón, choripán, pebre y campo. <b>Falta un auto no má.</b></p>
 
     <div class="countdown" id="countdown">
       <div class="countdown__box"><span id="cd-days">00</span><small>días</small></div>
@@ -65,9 +75,9 @@
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
       <span>🔥 SE BUSCA AUTO 🔥</span><span>🍖 CHORIPÁN CONFIRMADO 🍖</span><span>🚗 ¿QUIÉN PRESTA LA NAVE? 🚗</span>
-      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🌊 LAGO RAPEL TE ESPERA 🌊</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
+      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🚫 RAPEL CANCELADO 🚫</span><span>🏡 CAMPITO QUERIDO TE ESPERA 🏡</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
       <span>🔥 SE BUSCA AUTO 🔥</span><span>🍖 CHORIPÁN CONFIRMADO 🍖</span><span>🚗 ¿QUIÉN PRESTA LA NAVE? 🚗</span>
-      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🌊 LAGO RAPEL TE ESPERA 🌊</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
+      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🚫 RAPEL CANCELADO 🚫</span><span>🏡 CAMPITO QUERIDO TE ESPERA 🏡</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
     </div>
   </div>
 
@@ -97,8 +107,8 @@
         </article>
         <article class="stat reveal">
           <div class="stat__icon">🛣️</div>
-          <div class="stat__num" data-count="147" id="stat-km">0</div>
-          <div class="stat__label">Km de pique</div>
+          <div class="stat__num" data-count="55" id="stat-km">0</div>
+          <div class="stat__label">Km de pique (aprox.)</div>
           <div class="stat__bar"><i style="--w:100%"></i></div>
         </article>
         <article class="stat reveal">
@@ -126,22 +136,28 @@
       <h2 class="section__title"><span>02</span> El Pique</h2>
 
       <div class="route reveal">
-        <svg class="route__map" viewBox="0 0 1000 260" aria-label="Ruta Santiago a Rapel">
-          <path id="road" class="route__road" d="M60 200 C 220 60, 320 240, 480 140 S 760 40, 940 120" />
-          <path class="route__dash" d="M60 200 C 220 60, 320 240, 480 140 S 760 40, 940 120" />
+        <svg class="route__map" viewBox="0 0 1000 260" aria-label="Ruta Duoc UC a Campito Querido por Camino Viejo a Melipilla">
+          <path class="route__cancel" d="M720 130 C 800 60, 870 70, 940 110" />
+          <path id="road" class="route__road" d="M60 200 C 200 80, 320 240, 450 150 S 640 70, 720 130" />
+          <path class="route__dash" d="M60 200 C 200 80, 320 240, 450 150 S 640 70, 720 130" />
           <g class="route__pin" transform="translate(60 200)"><circle r="14"/><text y="-26">DUOC</text></g>
-          <g class="route__pin" transform="translate(480 140)"><circle r="10"/><text y="-22">Melipilla</text></g>
-          <g class="route__pin route__pin--end" transform="translate(940 120)"><circle r="16"/><text y="-28">RAPEL 🔥</text></g>
+          <g class="route__pin" transform="translate(450 150)"><circle r="10"/><text y="-22">Camino Viejo</text></g>
+          <g class="route__pin route__pin--x" transform="translate(940 110)"><circle r="12"/><text y="-24">RAPEL</text><line x1="-44" y1="-32" x2="44" y2="-18"/><text class="route__x" y="7">✕</text></g>
+          <g class="route__pin route__pin--end" transform="translate(720 130)"><circle r="16"/><text y="44">CAMPITO 🏡</text></g>
           <g id="route-car" class="route__car">
             <text font-size="38" x="-19" y="12">🚗</text>
           </g>
         </svg>
         <div class="route__info">
           <div><b>Salida</b> Duoc UC · Antonio Varas 666</div>
-          <div><b>Ruta 78</b> Autopista del Sol · <span id="info-km">~147</span> km</div>
-          <div><b id="info-time">~2 h</b> manejando (+ parada en el servi)</div>
-          <div><b>Peaje</b> ~$5.000 por auto</div>
-          <div><b>Bencina</b> ~$30.000 por auto</div>
+          <div><b>Camino Viejo</b> a Melipilla · <span id="info-km">~55</span> km aprox.</div>
+          <div><b id="info-time">~1 h 15</b> manejando (+ parada por pan amasado)</div>
+          <div><b>Peaje</b> $0 · camino viejo, sin autopista 😎</div>
+          <div><b>Bencina</b> ~$15.000 por auto</div>
+        </div>
+        <div class="route__go">
+          <a class="btn btn--fire" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Campito+Querido+Camino+Viejo+a+Melipilla">📍 Campito Querido en Maps</a>
+          <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://waze.com/ul?q=Campito%20Querido%20Camino%20Viejo%20a%20Melipilla&amp;navigate=yes">🚙 Waze</a>
         </div>
       </div>
     </section>
@@ -332,7 +348,7 @@
   </main>
 
   <footer class="footer">
-    <p>Hecho con carbón y cariño · <span class="fire-text-small">ASADO RAPEL 2026</span></p>
+    <p>Hecho con carbón y cariño · <span class="fire-text-small">ASADO <s>RAPEL</s> CAMPITO QUERIDO 2026</span></p>
     <p class="footer__small">Ningún choripán fue dañado... bueno, sí, todos.</p>
   </footer>
 
