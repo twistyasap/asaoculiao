@@ -144,9 +144,7 @@
           <g class="route__pin" transform="translate(450 150)"><circle r="10"/><text y="-22">Camino Viejo</text></g>
           <g class="route__pin route__pin--x" transform="translate(940 110)"><circle r="12"/><text y="-24">RAPEL</text><line x1="-44" y1="-32" x2="44" y2="-18"/><text class="route__x" y="7">✕</text></g>
           <g class="route__pin route__pin--end" transform="translate(720 130)"><circle r="16"/><text y="44">CAMPITO 🏡</text></g>
-          <g id="route-car" class="route__car">
-            <text font-size="38" x="-19" y="12">🚗</text>
-          </g>
+          <g id="route-car" class="route__car"></g>
         </svg>
         <div class="route__info">
           <div><b>Salida</b> Duoc UC · Antonio Varas 666</div>
@@ -170,20 +168,12 @@
         <!-- Auto 1 -->
         <article class="car-card reveal">
           <header class="car-card__head">
-            <h3>AUTO 1 <small>“La Nave de Gabo”</small></h3>
+            <h3>AUTO 1 <small>“La Nave de Gabo” · Kia Morning grafito</small></h3>
             <span class="badge badge--ok">4/5 · QUEDA 1</span>
           </header>
           <div class="car-scene">
             <div class="car-scene__road"></div>
-            <div class="car car--red">
-              <div class="car__body">
-                <div class="car__roof"><i></i><i></i></div>
-                <div class="car__light"></div>
-              </div>
-              <div class="car__wheel car__wheel--f"></div>
-              <div class="car__wheel car__wheel--b"></div>
-              <div class="car__exhaust"><span></span><span></span><span></span></div>
-            </div>
+            <div class="kia-wrap" id="kia-gabo"></div>
           </div>
           <ul class="seats" data-car="1">
             <li class="seat seat--driver">GABO <em>🧑‍✈️</em></li>
@@ -357,6 +347,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="js/fx.js"></script>
+  <script src="js/kia.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

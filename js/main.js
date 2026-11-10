@@ -8,7 +8,7 @@
   const EVENT_DATE = new Date("2026-11-28T09:30:00-03:00");
 
   const CREW = [
-    { name: "GABO",       avatar: "🧑‍✈️", role: "Chofer de La Nave",     car: "Auto 1", skill: "Maneja con una mano y la otra en el chori.", stats: { parrilla: 6, carrete: 8, puntualidad: 9 } },
+    { name: "GABO",       avatar: "🧑‍✈️", role: "Chofer del Kia Morning",     car: "Auto 1", skill: "Maneja con una mano y la otra en el chori.", stats: { parrilla: 6, carrete: 8, puntualidad: 9 } },
     { name: "10GO",       avatar: "😎",   role: "Copiloto · pasa los cambios", car: "Auto 1", skill: "Gabo maneja, 10GO pasa los cambios. Dupla inseparable.", stats: { parrilla: 5, carrete: 10, puntualidad: 4 } },
     { name: "MOYA",       avatar: "🧠",   role: "Organizador / tesorero", car: "Auto 1", skill: "Hizo esta web. Cobra las lucas sin piedad.",   stats: { parrilla: 7, carrete: 8, puntualidad: 8 } },
     { name: "FRANQUITO",  avatar: "🔥",   role: "Maestro parrillero",    car: "Auto 1", skill: "Prende el fuego con una hoja de diario y fe.",  stats: { parrilla: 10, carrete: 7, puntualidad: 6 } },
@@ -123,6 +123,9 @@
     const path = $("#road");
     const car = $("#route-car");
     if (!path || !car) return;
+    // Kia Morning en miniatura (svg anidado, centrado sobre el camino)
+    car.innerHTML = window.kiaSVG("kia-route")
+      .replace('<svg class="kia"', '<svg class="kia" x="-50" y="-38" width="100" height="47" overflow="visible"');
     // precalcula los puntos una vez (getPointAtLength en cada frame es caro)
     const len = path.getTotalLength();
     const STEPS = 400;
@@ -137,8 +140,8 @@
       const i = Math.floor(t * STEPS);
       const p = pts[i], p2 = pts[Math.min(STEPS, i + 1)];
       const angle = Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI;
-      // el emoji 🚗 mira a la izquierda: lo volteamos
-      car.setAttribute("transform", `translate(${p.x} ${p.y}) rotate(${angle}) scale(-1 1)`);
+      // el Kia mira a la derecha, igual que el sentido de la ruta
+      car.setAttribute("transform", `translate(${p.x} ${p.y}) rotate(${angle})`);
       raf = requestAnimationFrame(drive);
     }
     // solo anima cuando está en pantalla
@@ -555,6 +558,8 @@
   /* ---------- INIT ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     initOffscreenPause();
+    const kiaGabo = $("#kia-gabo");
+    if (kiaGabo && window.kiaSVG) kiaGabo.innerHTML = window.kiaSVG("kia-gabo");
     initEmbers();
     initCountdown();
     initCrew();
