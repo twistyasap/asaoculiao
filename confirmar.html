@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirma el Asado 🔥</title>
+  <meta name="description" content="Confirma tu asistencia al asado en Rapel y manda tu pase al grupo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&family=Permanent+Marker&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/confirmar.css">
+</head>
+<body class="confirm-page">
+
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="smoke-layer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+  <a href="index.html" class="back-link">← volver al dashboard</a>
+
+  <main class="confirm">
+    <header class="confirm__head">
+      <p class="hero__pre">Sábado 28 · Lago Rapel</p>
+      <h1 class="confirm__title"><span class="fire-text" data-text="¿VAI">¿VAI</span> <span class="confirm__title-2">O NO VAI?</span></h1>
+    </header>
+
+    <!-- barra de progreso tipo mecha -->
+    <div class="fuse" aria-hidden="true">
+      <div class="fuse__line"><i id="fuse-fill"></i></div>
+      <div class="fuse__spark" id="fuse-spark">🔥</div>
+    </div>
+
+    <div class="steps" id="steps">
+
+      <!-- PASO 1 -->
+      <section class="step active" data-step="1">
+        <h2>1. ¿Quién erí?</h2>
+        <div class="chips chips--names" id="name-chips"></div>
+        <input class="text-input" id="name-other" type="text" maxlength="20" placeholder="...u otro nombre aquí">
+        <button class="btn btn--fire next" data-next="2" disabled id="btn-step1">SIGUIENTE ➜</button>
+      </section>
+
+      <!-- PASO 2 -->
+      <section class="step" data-step="2">
+        <h2>2. ¿Vai al asado, <span class="who"></span>?</h2>
+        <div class="yesno" id="yesno">
+          <button class="btn btn--fire btn--huge" id="btn-yes">SÍ VOY 🔥</button>
+          <button class="btn btn--ghost btn--runaway" id="btn-no">No puedo 😢</button>
+        </div>
+        <p class="yesno__hint" id="no-hint">&nbsp;</p>
+      </section>
+
+      <!-- PASO 3 -->
+      <section class="step" data-step="3">
+        <h2>3. ¿Tení auto pa' prestar? 🚗</h2>
+        <div class="car-pick">
+          <button class="car-opt" data-car="si">
+            <span class="car-opt__emoji">🚙</span>
+            <b>¡Sí, yo pongo la nave!</b>
+            <small>Héroe nacional</small>
+          </button>
+          <button class="car-opt" data-car="no">
+            <span class="car-opt__emoji">🧍</span>
+            <b>No, voy de copiloto</b>
+            <small>Pero pongo pa' la bencina</small>
+          </button>
+        </div>
+
+        <h2 class="mt">¿Qué llevai? <small>(elige varias)</small></h2>
+        <div class="chips" id="bring-chips"></div>
+
+        <button class="btn btn--fire next" id="btn-finish" disabled>CONFIRMAR 🔥</button>
+      </section>
+
+      <!-- PASO 4: TICKET -->
+      <section class="step" data-step="4">
+        <div class="ticket" id="ticket">
+          <div class="ticket__left">
+            <p class="ticket__kicker">PASE VIP · ASADO RAPEL 2026</p>
+            <h3 class="ticket__name" id="t-name">NOMBRE</h3>
+            <dl class="ticket__data">
+              <div><dt>Fecha</dt><dd>Sáb 28 Nov</dd></div>
+              <div><dt>Salida</dt><dd>09:30 · Duoc Antonio Varas</dd></div>
+              <div><dt>Auto</dt><dd id="t-car">—</dd></div>
+              <div><dt>Lleva</dt><dd id="t-bring">—</dd></div>
+            </dl>
+          </div>
+          <div class="ticket__right">
+            <div class="ticket__num">N° <span id="t-num">000</span></div>
+            <div class="ticket__emoji">🔥</div>
+            <div class="ticket__barcode"></div>
+          </div>
+          <div class="ticket__stamp" id="t-stamp">CONFIRMADO</div>
+        </div>
+
+        <div class="final-actions">
+          <a class="btn btn--whatsapp" id="btn-wsp" target="_blank" rel="noopener">📲 MANDAR AL GRUPO</a>
+          <a class="btn btn--ghost" href="index.html">Ver el dashboard</a>
+          <button class="btn btn--ghost" id="btn-restart">Confirmar otro</button>
+        </div>
+      </section>
+
+      <!-- PASO 0: no va -->
+      <section class="step" data-step="sad">
+        <div class="sad">
+          <div class="sad__emoji">😭</div>
+          <h2>Ya po... te vamos a extrañar</h2>
+          <p>Te guardamos un choripán frío. Mentira, nos lo comemos.</p>
+          <a class="btn btn--ghost" id="btn-wsp-no" target="_blank" rel="noopener">Avisar al grupo igual</a>
+          <button class="btn btn--fire" id="btn-regret">ME ARREPENTÍ, SÍ VOY 🔥</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="js/fx.js"></script>
+  <script src="js/confirmar.js"></script>
+</body>
+</html>

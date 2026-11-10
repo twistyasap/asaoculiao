@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asado Rapel 🔥</title>
+  <meta name="description" content="Dashboard oficial del asado en Rapel: autos, crew, parrilla, lucas y ruta desde Santiago.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&family=Permanent+Marker&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Brasas de fondo -->
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="smoke-layer" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#top" class="nav__logo">🔥 ASADO<span>RAPEL</span></a>
+    <ul class="nav__links">
+      <li><a href="#dash">Dashboard</a></li>
+      <li><a href="#ruta">El pique</a></li>
+      <li><a href="#autos">Autos</a></li>
+      <li><a href="#crew">La crew</a></li>
+      <li><a href="#parrilla">Parrilla</a></li>
+      <li><a href="#lucas">Lucas</a></li>
+      <li><a href="#plan">Itinerario</a></li>
+      <li><a href="confirmar.html" class="nav__cta">Confirmar ✅</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <p class="hero__pre">Santiago ➜ Lago Rapel · edición 2026</p>
+    <h1 class="hero__title">
+      <span class="fire-text" data-text="ASADO">ASADO</span>
+      <span class="hero__title-2"><span class="flag-text" data-text="RAPEL">RAPEL</span><i class="flag-star" aria-hidden="true">★</i></span>
+    </h1>
+    <svg class="hero__underline" viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="cl-grad" x1="0" x2="1"><stop offset="0" stop-color="#0039a6"/><stop offset=".33" stop-color="#0039a6"/><stop offset=".34" stop-color="#ffffff"/><stop offset=".66" stop-color="#ffffff"/><stop offset=".67" stop-color="#d52b1e"/><stop offset="1" stop-color="#d52b1e"/></linearGradient></defs>
+      <path d="M5 20 Q 100 5 200 15 T 395 10" stroke="url(#cl-grad)" />
+    </svg>
+    <p class="hero__sub">Carbón, choripán, pebre y lago. <b>Falta un auto no má.</b></p>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown__box"><span id="cd-days">00</span><small>días</small></div>
+      <div class="countdown__box"><span id="cd-hours">00</span><small>horas</small></div>
+      <div class="countdown__box"><span id="cd-mins">00</span><small>min</small></div>
+      <div class="countdown__box"><span id="cd-secs">00</span><small>seg</small></div>
+    </div>
+    <p class="hero__date">Sábado 28 de noviembre · salida 09:30 desde Duoc UC Antonio Varas 666</p>
+
+    <div class="hero__grill" aria-hidden="true">
+      <div class="flames">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>🔥 SE BUSCA AUTO 🔥</span><span>🍖 CHORIPÁN CONFIRMADO 🍖</span><span>🚗 ¿QUIÉN PRESTA LA NAVE? 🚗</span>
+      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🌊 LAGO RAPEL TE ESPERA 🌊</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
+      <span>🔥 SE BUSCA AUTO 🔥</span><span>🍖 CHORIPÁN CONFIRMADO 🍖</span><span>🚗 ¿QUIÉN PRESTA LA NAVE? 🚗</span>
+      <span>🕹️ 10GO PASA LOS CAMBIOS 🕹️</span><span>🌊 LAGO RAPEL TE ESPERA 🌊</span><span>❓ GASPI Y ECHEVERRÍA: DEN SEÑALES ❓</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- DASHBOARD -->
+    <section class="section" id="dash">
+      <h2 class="section__title"><span>01</span> El Dashboard</h2>
+      <div class="stats">
+        <article class="stat reveal">
+          <div class="stat__icon">🙋‍♂️</div>
+          <div class="stat__num" data-count="8" id="stat-confirmed">0</div>
+          <div class="stat__label">Confirmados</div>
+          <div class="stat__bar"><i style="--w:80%"></i></div>
+        </article>
+        <article class="stat reveal stat--warn">
+          <div class="stat__icon">👻</div>
+          <div class="stat__num" data-count="2" id="stat-pending">0</div>
+          <div class="stat__label">Desaparecidos</div>
+          <div class="stat__bar"><i style="--w:20%"></i></div>
+        </article>
+        <article class="stat reveal stat--danger">
+          <div class="stat__icon">🚗</div>
+          <div class="stat__num"><span data-count="1" id="stat-cars">0</span>/2</div>
+          <div class="stat__label">Autos listos</div>
+          <div class="stat__bar"><i style="--w:50%" id="stat-cars-bar"></i></div>
+        </article>
+        <article class="stat reveal">
+          <div class="stat__icon">🛣️</div>
+          <div class="stat__num" data-count="147" id="stat-km">0</div>
+          <div class="stat__label">Km de pique</div>
+          <div class="stat__bar"><i style="--w:100%"></i></div>
+        </article>
+        <article class="stat reveal">
+          <div class="stat__icon">🌭</div>
+          <div class="stat__num" data-count="40">0</div>
+          <div class="stat__label">Choripanes meta</div>
+          <div class="stat__bar"><i style="--w:90%"></i></div>
+        </article>
+        <article class="stat reveal">
+          <div class="stat__icon">🌡️</div>
+          <div class="stat__num"><span data-count="29">0</span>°</div>
+          <div class="stat__label">Calor estimado</div>
+          <div class="stat__bar"><i style="--w:75%"></i></div>
+        </article>
+      </div>
+
+      <div class="alert reveal">
+        <div class="alert__siren" aria-hidden="true"></div>
+        <p><b>ALERTA ROJA:</b> el auto de Gabo va con 10GO de copiloto pasando los cambios y le queda <b>1 solo cupo</b>. Somos 8 (+2 fantasmas). <u>Hay que conseguirse otro auto ya</u> o alguien se va en micro a Melipilla.</p>
+      </div>
+    </section>
+
+    <!-- RUTA -->
+    <section class="section" id="ruta">
+      <h2 class="section__title"><span>02</span> El Pique</h2>
+
+      <div class="route reveal">
+        <svg class="route__map" viewBox="0 0 1000 260" aria-label="Ruta Santiago a Rapel">
+          <path id="road" class="route__road" d="M60 200 C 220 60, 320 240, 480 140 S 760 40, 940 120" />
+          <path class="route__dash" d="M60 200 C 220 60, 320 240, 480 140 S 760 40, 940 120" />
+          <g class="route__pin" transform="translate(60 200)"><circle r="14"/><text y="-26">DUOC</text></g>
+          <g class="route__pin" transform="translate(480 140)"><circle r="10"/><text y="-22">Melipilla</text></g>
+          <g class="route__pin route__pin--end" transform="translate(940 120)"><circle r="16"/><text y="-28">RAPEL 🔥</text></g>
+          <g id="route-car" class="route__car">
+            <text font-size="38" x="-19" y="12">🚗</text>
+          </g>
+        </svg>
+        <div class="route__info">
+          <div><b>Salida</b> Duoc UC · Antonio Varas 666</div>
+          <div><b>Ruta 78</b> Autopista del Sol · <span id="info-km">~147</span> km</div>
+          <div><b id="info-time">~2 h</b> manejando (+ parada en el servi)</div>
+          <div><b>Peaje</b> ~$5.000 por auto</div>
+          <div><b>Bencina</b> ~$30.000 por auto</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOS -->
+    <section class="section" id="autos">
+      <h2 class="section__title"><span>03</span> Los Autos</h2>
+      <div class="cars">
+
+        <!-- Auto 1 -->
+        <article class="car-card reveal">
+          <header class="car-card__head">
+            <h3>AUTO 1 <small>“La Nave de Gabo”</small></h3>
+            <span class="badge badge--ok">4/5 · QUEDA 1</span>
+          </header>
+          <div class="car-scene">
+            <div class="car-scene__road"></div>
+            <div class="car car--red">
+              <div class="car__body">
+                <div class="car__roof"><i></i><i></i></div>
+                <div class="car__light"></div>
+              </div>
+              <div class="car__wheel car__wheel--f"></div>
+              <div class="car__wheel car__wheel--b"></div>
+              <div class="car__exhaust"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <ul class="seats" data-car="1">
+            <li class="seat seat--driver">GABO <em>🧑‍✈️</em></li>
+            <li class="seat seat--copilot">10GO <em>🕹️ cambios</em></li>
+            <li class="seat">MOYA</li>
+            <li class="seat">FRANQUITO</li>
+            <li class="seat seat--empty">1 CUPO LIBRE 🙋</li>
+          </ul>
+        </article>
+
+        <!-- Auto 2 incógnito -->
+        <article class="car-card car-card--mystery reveal" id="mystery-card">
+          <header class="car-card__head">
+            <h3>AUTO 2 <small id="mystery-owner">“El Incógnito”</small></h3>
+            <span class="badge badge--danger" id="mystery-badge">SE BUSCA</span>
+          </header>
+          <div class="car-scene">
+            <div class="car-scene__road"></div>
+            <div class="qmarks" aria-hidden="true"><span>?</span><span>?</span><span>?</span><span>?</span><span>?</span></div>
+            <div class="car car--ghost" id="mystery-car">
+              <div class="car__body">
+                <div class="car__roof"><i></i><i></i></div>
+                <div class="car__light"></div>
+                <div class="car__q">?</div>
+              </div>
+              <div class="car__wheel car__wheel--f"></div>
+              <div class="car__wheel car__wheel--b"></div>
+            </div>
+          </div>
+          <ul class="seats" data-car="2">
+            <li class="seat seat--driver seat--empty">¿¿CHOFER??</li>
+            <li class="seat">LORO</li>
+            <li class="seat">MARTO</li>
+            <li class="seat">CHICO DENI</li>
+            <li class="seat seat--empty">¿GASPI / ECHE?</li>
+          </ul>
+          <button class="btn btn--fire" id="btn-lend">🔑 YO PRESTO LA NAVE</button>
+          <button class="btn btn--ghost" id="btn-lend-reset" hidden>Deshacer</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CREW -->
+    <section class="section" id="crew">
+      <h2 class="section__title"><span>04</span> La Crew</h2>
+      <p class="section__hint">Pasa el mouse (o toca) para ver la ficha 👀</p>
+      <div class="crew" id="crew-grid"></div>
+
+      <h3 class="subtitle">Se busca 🕵️</h3>
+      <div class="wanted" id="wanted-grid"></div>
+    </section>
+
+    <!-- PARRILLA -->
+    <section class="section" id="parrilla">
+      <h2 class="section__title"><span>05</span> La Parrilla</h2>
+      <div class="grill-zone">
+        <div class="bbq reveal" id="bbq" title="Toca la carne">
+          <div class="bbq__smoke"><span></span><span></span><span></span><span></span></div>
+          <div class="bbq__grate">
+            <div class="meat meat--chori"></div>
+            <div class="meat meat--chori"></div>
+            <div class="meat meat--chori"></div>
+            <div class="meat meat--steak"></div>
+            <div class="meat meat--steak"></div>
+            <div class="meat meat--corn"></div>
+          </div>
+          <div class="bbq__coals">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="bbq__base"></div>
+          <div class="bbq__legs"><i></i><i></i></div>
+        </div>
+
+        <div class="shop reveal">
+          <div class="shop__head">
+            <h3>Lista del súper 🛒</h3>
+            <span id="shop-pct">0%</span>
+          </div>
+          <div class="progress"><i id="shop-bar"></i></div>
+          <ul class="shop__list" id="shop-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LUCAS -->
+    <section class="section" id="lucas">
+      <h2 class="section__title"><span>06</span> Las Lucas</h2>
+      <div class="money reveal">
+        <div class="money__rows" id="money-rows"></div>
+        <div class="money__total">
+          <div>
+            <small>Total</small>
+            <strong id="money-total">$0</strong>
+          </div>
+          <div class="money__people">
+            <small>Personas</small>
+            <div class="stepper">
+              <button id="ppl-minus" aria-label="Menos">−</button>
+              <span id="ppl-count">8</span>
+              <button id="ppl-plus" aria-label="Más">+</button>
+            </div>
+          </div>
+          <div class="money__each">
+            <small>Cada uno pone</small>
+            <strong id="money-each">$0</strong>
+          </div>
+        </div>
+        <div class="coins" id="coins" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ITINERARIO + RULETA -->
+    <section class="section" id="plan">
+      <h2 class="section__title"><span>07</span> El Itinerario</h2>
+      <div class="plan-grid">
+        <ol class="timeline" id="timeline"></ol>
+
+        <div class="roulette reveal">
+          <h3>Ruleta del destino 🎰</h3>
+          <select id="roulette-mode">
+            <option value="Lava la loza">¿Quién lava la loza?</option>
+            <option value="Prende el fuego">¿Quién prende el fuego?</option>
+            <option value="Va a comprar hielo">¿Quién va por hielo?</option>
+            <option value="Maneja de vuelta">¿Quién maneja de vuelta?</option>
+          </select>
+          <div class="wheel-wrap">
+            <div class="wheel-pointer"></div>
+            <canvas id="wheel" width="320" height="320"></canvas>
+          </div>
+          <button class="btn btn--fire" id="btn-spin">GIRAR 🔥</button>
+          <p class="roulette__result" id="roulette-result">&nbsp;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QR CONFIRMACIÓN -->
+    <section class="section" id="qr">
+      <h2 class="section__title"><span>08</span> Confirma con QR</h2>
+      <div class="qr reveal">
+        <div class="qr__frame">
+          <div class="qr__scan" aria-hidden="true"></div>
+          <div class="qr__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div id="qr-code" class="qr__code"></div>
+        </div>
+        <div class="qr__info">
+          <h3>Escanea y confirma 📲</h3>
+          <p>Gaspi, Echeverría o cualquier perdido: escanean esto, llenan la ficha y mandan la confirmación al grupo por WhatsApp. Sin excusas.</p>
+          <a class="btn btn--fire" id="qr-link" href="confirmar.html">IR A CONFIRMAR 🔥</a>
+          <details class="qr__config">
+            <summary>⚙️ Cambiar link del QR</summary>
+            <p class="qr__warn" id="qr-warn" hidden>Estás abriendo la web como archivo local: el QR solo funciona en el celu si la subes a internet (GitHub Pages, Netlify…). Pega aquí el link público de <b>confirmar.html</b>.</p>
+            <div class="qr__row">
+              <input type="url" id="qr-url" placeholder="https://.../confirmar.html">
+              <button class="btn btn--ghost" id="qr-update">Actualizar</button>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Hecho con carbón y cariño · <span class="fire-text-small">ASADO RAPEL 2026</span></p>
+    <p class="footer__small">Ningún choripán fue dañado... bueno, sí, todos.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
